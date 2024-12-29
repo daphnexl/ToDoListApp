@@ -1,0 +1,77 @@
+﻿<Window x:Class="ToDoListWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoListWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400" KeyDown="Window_KeyDown">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4B0082" Offset="0.2"/>
+            <GradientStop Color="#000080" Offset="0.5"/>
+            <GradientStop Color="#000000" Offset="1.35"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="285*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="ClearButton"
+                Content="Clear"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top" 
+                Width="60"
+                Height="20" 
+                Margin="0,15,15,0" 
+                Background="Transparent" 
+                BorderThickness="1.2"  
+                Foreground="White" 
+                Click="ClearButton_Click"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      Margin="0,40,0,0" 
+                      Grid.RowSpan="2">
+
+            <StackPanel x:Name="TaskListPanel" 
+                        VerticalAlignment="Top" 
+                        Margin="20,20,20,20"
+                        HorizontalAlignment="Center"
+            RenderOptions.BitmapScalingMode="HighQuality">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <TextBlock x:Name="TaskHeaderText" 
+                           Text="No tasks yet" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"/>
+
+                <Button x:Name="AddTaskButton" 
+                        Width="40" Height="40"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        Margin="0,10,0,10"
+                        BorderThickness="2" 
+                        FontSize="24" Click="AddTaskButton_Click"
+                        MouseDown="AddTaskButton_MouseDown" 
+                        MouseUp="AddTaskButton_MouseUp">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <TextBlock Text="+" 
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Center" 
+                                           FontSize="16" 
+                                           Foreground="White"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
